@@ -9,8 +9,7 @@ var searchManager = null;
 
     document.addEventListener('deviceready', onDeviceReady.bind(this), false);
     document.addEventListener('deviceready', getMap, false);
-    //document.addEventListener('deviceready', LoadSearchModule, false);
-    document.addEventListener('deviceready', searchRequest, false);
+    //document.addEventListener('deviceready', searchRequest, false);
 
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
@@ -29,19 +28,20 @@ var searchManager = null;
     };
 
     function getMap() {
-        map = new Microsoft.Maps.Map(document.getElementById('map'), { credentials: 'AmSAGzZ9ynbNtNEyfJ8wdkqZLwoxt1KGvW8WGgnboLHCPz9m8hZjzPoxjvJR8trg' });
+        map = new Microsoft.Maps.Map(document.getElementById("map"), { credentials: "AmSAGzZ9ynbNtNEyfJ8wdkqZLwoxt1KGvW8WGgnboLHCPz9m8hZjzPoxjvJR8trg", center: new Microsoft.Maps.Location(14.590905, 120.978627), zoom: 11 });
+        Microsoft.Maps.loadModule('Microsoft.Maps.Search', { callback: searchRequest });
     }
     function createSearchManager() {
-        map.addComponent('searchManager', new Microsoft.Maps.Search.SearchManager(map);
+        map.addComponent('searchManager', new Microsoft.Maps.Search.searchManager(map));
         searchManager = map.getComponent('searchManager');
     }
-    function LoadSearchModule() {
-        Microsoft.Maps.loadModule('Microsoft.Maps.Search', { callback: searchRequest })
-    }
+   // function LoadSearchModule() {
+      //  Microsoft.Maps.loadModule('Microsoft.Maps.Search', { callback: searchRequest })
+    //////}
     function searchRequest() {
         createSearchManager();
         var userData = { name: 'User', id: 'XYZ' };
-        var query = 'hotels in Metro Manila, Philippines';
+        var query = 'Hotels in Metro Manila, Philippines';
         var request =
             {
                 query: query,

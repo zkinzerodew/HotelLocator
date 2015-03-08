@@ -7,7 +7,9 @@
   "deletedFilesIos": [],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [],
+  "changedFiles": [
+    "scripts\\index.js"
+  ],
   "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []
